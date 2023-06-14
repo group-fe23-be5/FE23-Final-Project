@@ -15,13 +15,16 @@ function SignIn(){
     const Login = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/login', {
+            const response = await axios.post('https://be5finalproject-production.up.railway.app/login', {
                 email: email,
                 password: password,
             });
             localStorage.setItem('token', response.data.access_token);
             console.log(`ini tokennya ${response.data.access_token}`);
-            history("/");
+            if (response.data.code === 200){
+                // history("/");
+                window.open("http://localhost:5173/", "_self");
+            }
         } catch (error) {
             if (error.response){
                 setMsg(error.response.data.error);

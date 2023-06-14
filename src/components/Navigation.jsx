@@ -1,48 +1,61 @@
 import React from 'react';
-import { Navbar, Container, Nav} from 'react-bootstrap';
-import './Navigation.css'
-import { NavLink,  } from 'react-router-dom'
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import './Navigation.css';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Navigation() {
-  const PrivateNavLink = ({to, children}) => {
+  const history = useNavigate();
+
+  const PrivateNavLink = ({ to, children }) => {
     const token = localStorage.getItem('token');
-    console.log(`ini tokennn ${token}`)
 
-    if (token == null){
-      return <NavLink to="/signin" />;
-    }
+    const handleClick = () => {
+      if (token) {
+        history.push(to);
+      } else {
+        history('/signin');
+      }
+    };
 
-    return <NavLink to={to} className="nav-link" id="nav-menu">{children}</NavLink>;
-  }
+    return (
+      <Nav.Link onClick={handleClick} className="nav-link" id="nav-menu">
+        {children}
+      </Nav.Link>
+    );
+  };
 
   return (
     <>
-        <Navbar expand="lg">
-          <Container className="nav-container">
-              <Navbar.Brand href="#home">
-                <img src="/src/assets/logo_eduart.png" alt="Logo" />
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="menu-tengah">
-                  <NavLink  to="/" className="nav-link" id="nav-menu" >Home</NavLink>
-                  <NavLink to="/course" className="nav-link" id="nav-menu" >Course</NavLink>
-                  {/* <NavLink to="/mentor" className="nav-link" id="nav-menu" >Mentor</NavLink> */}
-                  <NavLink to="/article" className="nav-link"  id="nav-menu">Article</NavLink>
-                  <PrivateNavLink to="/mentor">Mentor</PrivateNavLink>
-                  {/* <PrivateNavLink to="/article">Article</PrivateNavLink> */}
-                </Nav>
-                <Nav className="menu-kanan">
-                  <NavLink to="/SignIn" className="nav-button">
-                    <button className='signin-button'>Sign In</button>
-                  </NavLink>
-                  <NavLink to="/SignUp" className="nav-button">
-                    <button className='signup-button'>Sign Up</button>
-                  </NavLink>
-                </Nav>
-              </Navbar.Collapse>
-          </Container>
-        </Navbar>
+      <Navbar expand="lg">
+        <Container className="nav-container">
+          <Navbar.Brand href="#home">
+            <img src="/src/assets/logo_eduart.png" alt="Logo" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="menu-tengah">
+              <NavLink to="/" className="nav-link" id="nav-menu">
+                Home
+              </NavLink>
+              <NavLink to="/course" className="nav-link" id="nav-menu">
+                Course
+              </NavLink>
+              <PrivateNavLink to="/mentor">Mentor</PrivateNavLink>
+              <NavLink to="/article" className="nav-link" id="nav-menu">
+                Article
+              </NavLink>
+            </Nav>
+            <Nav className="menu-kanan">
+              <NavLink to="/SignIn" className="nav-button">
+                <button className="signin-button">Sign In</button>
+              </NavLink>
+              <NavLink to="/SignUp" className="nav-button">
+                <button className="signup-button">Sign Up</button>
+              </NavLink>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }

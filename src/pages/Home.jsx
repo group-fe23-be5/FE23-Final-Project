@@ -83,7 +83,7 @@ function Home() {
                   <hr/>
                   <h5 className='class-price' >Price : <span className='nom-price'>Rp20.000/month</span></h5>
                   <hr/>
-                <Button className='card-class-button'>Mulai !</Button>
+                <Button className='card-class-button' onClick={onClickOfflineClass}>Mulai !</Button>
               </Card.Body>
             </Card>
           </Col>

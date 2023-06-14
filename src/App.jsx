@@ -1,6 +1,7 @@
-
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom"
 import Navigation from "./components/Navigation"
+import NavigationIn from "./components/NavigationIn"
 import Article from "./pages/Article/Article"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
@@ -19,9 +20,24 @@ import Art from "./pages/OfflineClass/Art";
 import Dance from "./pages/OfflineClass/Dance";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Lakukan logika untuk memeriksa status login pengguna
+    // Contoh sederhana untuk mendapatkan status login dari local storage
+    const token = localStorage.getItem('token');
+    if (token ) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+
   return (
     <>
-      <Navigation />
+        {isAuthenticated ? (
+          <NavigationIn />
+        ) :  <Navigation />}
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/signup" element={<SignUp />}/>
