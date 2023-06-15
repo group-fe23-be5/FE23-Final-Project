@@ -50,7 +50,9 @@ Nav .active{
 .dropdown-menu.show {
   width: 100%;
 }
-
+.menu-kanan.navbar-nav{
+  width: 30px;
+}
 @media (max-width: 992px) {   
   .navbar-collapse{
     flex-direction: column;

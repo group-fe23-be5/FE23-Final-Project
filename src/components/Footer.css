@@ -32,9 +32,10 @@ ul.footer-list-menu li a:hover{
 .text-white.fs-5.mx-2:hover{
     transform: scale(1.5); 
 }
-.col-lg-6{
+.discover.col{
     display: flex;
     flex-direction: row;
+    margin-left: 60px;
 }
 .col-lg-2{
     text-align: center;

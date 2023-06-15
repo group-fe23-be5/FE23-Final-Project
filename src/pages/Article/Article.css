@@ -14,6 +14,10 @@
     align-items: center;
 }
 
+.article-col.col-lg-4{
+    height: 100%;
+}
+
 
 /* begin : style article-content-section */
 .article-content-section.container{
@@ -50,7 +54,14 @@
     background-size: cover;
 }
 /* end : style article-content-section */
-
+h6.article-subjudul{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+h6.footer-subjudul{
+    font-weight: 200;
+    font-size: 15px;
+}
 @media (max-width: 992px) {
     /* begin : style article-hero-section */
     .article-hero-content.col-lg-9{

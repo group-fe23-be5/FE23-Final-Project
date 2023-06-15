@@ -123,31 +123,34 @@ function Mentor(){
                 </Col>
             </Row> */}
                  <Row className="mentor-content">
-        {mentor.map((m) => (
-          <React.Fragment key={m.id_mentor}>
-            <Col lg={4} className="mentor-profil-col">
-              <Card className="mentor-profil-card">
-                <Card.Body className="mentor-profil">
-                  <Col className="mentor-profil" xs={6} md={4}>
-                    <Image src={`https://be5finalproject-production.up.railway.app/assets/${m.filename}`} className="mentor-profil-img" roundedCircle />
-                    <h5 className="mentor-name">{m.nama}</h5>
-                    <p className="mentor-career">{m.keahlian}</p>
-                  </Col>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col lg={8} className="mentor-desc-col">
-              <Card className="mentor-desc-card">
-                <Card.Body className="mentor-desc">
-                  <h3>{m.nama}</h3>
-                  <p>{m.deskripsi}</p>
-                  <Button className='mentor-schedule-button'>Atur Jadwal</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </React.Fragment>
-        ))}
-      </Row>
+                    
+                        {mentor.map((m) => (
+                        <React.Fragment key={m.id_mentor}>
+                            <Row className="mentor-content-list">
+                            <Col lg={4} className="mentor-profil-col">
+                            <Card className="mentor-profil-card">
+                                <Card.Body className="mentor-profil">
+                                <Col className="mentor-profil" xs={6} md={4}>
+                                    <Image src={`https://be5finalproject-production.up.railway.app/assets/${m.filename}`} className="mentor-profil-img" roundedCircle />
+                                    <h5 className="mentor-name">{m.nama}</h5>
+                                    <p className="mentor-career">{m.keahlian}</p>
+                                </Col>
+                                </Card.Body>
+                            </Card>
+                            </Col>
+                            <Col lg={8} className="mentor-desc-col">
+                            <Card className="mentor-desc-card">
+                                <Card.Body className="mentor-desc">
+                                <h3>{m.nama}</h3>
+                                <p>{m.deskripsi}</p>
+                                <Button className='mentor-schedule-button'>Atur Jadwal</Button>
+                                </Card.Body>
+                            </Card>
+                            </Col>
+                            </Row>
+                        </React.Fragment>
+                        ))}
+                </Row>
         </Container>
         
     )

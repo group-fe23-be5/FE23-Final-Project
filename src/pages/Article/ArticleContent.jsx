@@ -40,22 +40,22 @@ function ArticleContent() {
       </Row>
       <Row className="article-publish-detail">
         <Stack direction="horizontal" gap={3}>
-          <div className="bg-warning rounded-circle">MS</div>
-          <div className="me-auto author size-sm">{artikel.author}<br />speciality</div>
+          <div className="bg-warning rounded-circle">MR</div>
+          <div className="me-auto author size-sm">{artikel.author}<br />author</div>
           <div className="article-date">{formattedDate}</div>
         </Stack>
       </Row>
       <Row className="article-cover"></Row>
       <Row className="article-content">
-        <h6>{artikel.subJudul}</h6>
+        <h6 className="article-subjudul">{artikel.subJudul}</h6>
         {artikel.content.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
       </Row>
       <hr />
-      {/* <h6>
-        judul
-      </h6> */}
+      <h6 className="footer-subjudul">
+        {artikel.judul}
+      </h6>
     </Container>
   );
 }
