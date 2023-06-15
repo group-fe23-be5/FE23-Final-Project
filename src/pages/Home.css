@@ -110,12 +110,16 @@ ul#class-detail {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     margin: 25px 0;
     width: 100%;
+    height: 100%;
+}
+.card-article-title.card-title.h5{
+    font-size: 25px;
 }
 .card-article-title{
     text-align: justify;
 }
 .card-article-title.card-text{
-    height: 70%;
+    height: 60%;
 }
 .card-article-button.btn{
     width: 100%;

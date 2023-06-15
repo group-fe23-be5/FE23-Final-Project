@@ -30,6 +30,9 @@ img.mentor-hero-img{
 .mentor-content.row{
     margin: 50px;
 }
+.mentor-content-list.row{
+    margin: 30px 0;
+}
 img.mentor-profil-img.rounded-circle{
     width: 100%;
 }

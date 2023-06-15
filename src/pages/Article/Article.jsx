@@ -35,30 +35,29 @@ function Article(){
             <Container className="article-card-section">
                 <Row className='article-row'>
                    
-                    <div>
-      {articles.map((article) => (
-        <Col className='article-col' key={article.id_artikel}>
-          <Card className='article-card'>
-            <Card.Img variant='top' src={`https://be5finalproject-production.up.railway.app/assets/${article.filename}`} />
-            <Card.Body>
-              <Card.Title className='card-article-title'>
-                {article.judul}
-              </Card.Title>
-              <hr className='article-separator' />
-              <Card.Text className='card-article-title'>
-                {article.subJudul}
-              </Card.Text>
-              <Link to={`/articleContent/${article.id_artikel}`}>
-                <Button className='card-article-button'>
-                  Baca Selengkapnya...
-                </Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </div>
-                    <Col className='article-col' >
+                   
+                      {articles.map((article) => (
+                        <Col lg={4} className='article-col' key={article.id_artikel}>
+                          <Card className='article-card'>
+                            <Card.Img variant='top' src={`https://be5finalproject-production.up.railway.app/assets/${article.filename}`} />
+                            <Card.Body>
+                              <Card.Title className='card-article-title'>
+                                {article.judul}
+                              </Card.Title>
+                              <hr className='article-separator' />
+                              <Card.Text className='card-article-title'>
+                                {article.subJudul}
+                              </Card.Text>
+                              <Link to={`/articleContent/${article.id_artikel}`}>
+                                <Button className='card-article-button'>
+                                  Baca Selengkapnya...
+                                </Button>
+                              </Link>
+                            </Card.Body>
+                          </Card>
+                        </Col>
+                      ))}
+                    {/* <Col className='article-col' >
                         <Card className='article-card' >
                         <Card.Img variant="top" src="/src/assets/putus.png" />
                         <Card.Body>
@@ -97,7 +96,7 @@ function Article(){
                             </Link>
                         </Card.Body>
                         </Card>
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
         </div>

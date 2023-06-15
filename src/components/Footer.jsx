@@ -19,7 +19,7 @@ function Footer() {
               silang informasi yang menghasilkan pengetahuan 
               dan pendekatan seni dan literasi.</p>
           </Col>
-          <Col lg={6}>
+          <Col className='discover'>
             
               <Col lg={4} className='footer-menu'>
                 <h5>Discover</h5>
@@ -38,43 +38,9 @@ function Footer() {
                   </li>
                 </ul>
               </Col>
-              <Col lg={4} className='footer-menu'>
-                <h5>Resources</h5>
-                  <ul className='footer-list-menu'>
-                    <li>
-                      <Link to="/">Download</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Help Center</Link>
-                    </li>
-                    <li>
-                      <Link to="">Events</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Guides</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Partner</Link>
-                    </li>
-                  </ul>
-              </Col> 
-              <Col lg={4} className='footer-menu'>
-                <h5>Company</h5>
-                  <ul className='footer-list-menu'>
-                    <li>
-                      <Link to="/">About Us</Link>
-                    </li>
-                    <li>
-                      <Link to="/">Contact Us</Link>
-                    </li>
-                    <li>
-                      <Link to="/course">Products</Link>
-                    </li>
-                  </ul>
-              </Col>
             
           </Col>
-          <Col lg={2}>
+          <Col lg={3}>
             <a href="https://www.facebook.com/">
             <FaFacebookF className="text-white fs-5 mx-2" />
             </a>
@@ -84,7 +50,6 @@ function Footer() {
             <a href="https://www.youtube.com/">
               <FaYoutube className="text-white fs-5 mx-2" />
             </a>
-            <br/>
             <a href="https://www.linkedin.com/">
               <FaLinkedin className="text-white fs-5 mx-2" />
             </a>
