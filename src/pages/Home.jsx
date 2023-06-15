@@ -1,9 +1,27 @@
-import React from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import './Home.css'
 import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Home() {
+  const [artikel, setArtikel] = useState([]);
+
+  useEffect(() => {
+    const fetchArtikel = async () => {
+      try {
+        const response = await axios.get("https://be5finalproject-production.up.railway.app/artikel");
+
+        if (response.data){
+          setArtikel(response.data);
+        }
+      } catch (error) {
+        console.log(error);  
+      }
+    };
+
+    fetchArtikel();
+  }, [])
 
   const navigate = useNavigate();
 
@@ -128,7 +146,7 @@ function Home() {
         </Row>
       </Container>
 
-      <Container className='article-section'>
+      {/* <Container className='article-section'>
         <h1 className='article-title' >Artikel Kami</h1>
         <p className='article-title desc'>Ruang di media yang memberikan kesempatan bagi para penulis amatir atau profesional untuk mempublikasikan hasil karya sastra mereka. Fitur ini memberikan kesempatan bagi penulis untuk menunjukkan kreativitas dan imajinasi mereka dalam bentuk cerpen, puisi, atau karya sastra lainnya.</p>
         <Row className='article-row'>
@@ -191,7 +209,31 @@ function Home() {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
+
+<Container className='article-section'>
+      <h1 className='article-title'>Artikel Kami</h1>
+      <p className='article-title desc'>Ruang di media yang memberikan kesempatan bagi para penulis amatir atau profesional untuk mempublikasikan hasil karya sastra mereka. Fitur ini memberikan kesempatan bagi penulis untuk menunjukkan kreativitas dan imajinasi mereka dalam bentuk cerpen, puisi, atau karya sastra lainnya.</p>
+      <Row className='article-row'>
+        {artikel.map((article) => (
+          <Col className='article-col' key={article.id_artikel}>
+            <Card className='article-card'>
+              <Card.Img variant="top" src={`https://be5finalproject-production.up.railway.app/assets/${article.filename}`} />
+              <Card.Body>
+                <Card.Title className='card-article-title'>{article.judul}</Card.Title>
+                <hr className='article-separator' />
+                <Card.Text className='card-article-title'>
+                  {article.content[0]}
+                </Card.Text>
+                <Link to={`/articleContent/${article.id_artikel}`}>
+                  <Button className='card-article-button'>Baca Selengkapnya...</Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
 
     </div>
   );

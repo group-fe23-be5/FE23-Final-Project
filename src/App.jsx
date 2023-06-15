@@ -23,10 +23,9 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Lakukan logika untuk memeriksa status login pengguna
-    // Contoh sederhana untuk mendapatkan status login dari local storage
     const token = localStorage.getItem('token');
-    if (token ) {
+    
+    if (token) {
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
@@ -51,7 +50,7 @@ function App() {
         <Route path="/virtualAccount" element={<VirtualAccount />}/>
         <Route path="/metodePembayaran" element={<MetodePembayaran />}/>
         <Route path="/mentor" element={<Mentor/>}/>
-        <Route path="/music" element={<Music />} />
+        <Route path="/kursus/:id" element={<Music />} />
         <Route path="/art" element={<Art />} />
         <Route path="/dance" element={<Dance />} />
       </Routes>

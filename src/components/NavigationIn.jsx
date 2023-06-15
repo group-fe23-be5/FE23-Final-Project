@@ -13,8 +13,8 @@ function NavigationIn() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        console.log(`token navigatiaon ${token}`)
+        // const token = localStorage.getItem('token');
+        // console.log(`token navigatiaon ${token}`)
         const response = await axios.get('https://be5finalproject-production.up.railway.app/users', {
           headers: {
             Authorization: `Bearer ${token}`,

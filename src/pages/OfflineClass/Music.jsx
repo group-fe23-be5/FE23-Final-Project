@@ -14,19 +14,50 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { ADD_OFFLINE_CLASS, GET_OFFLINE_CLASS } from "./query";
 // import { useMutation } from "@apollo/client";
-import { useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router";
 
 const Music = () => {
+  const { id } = useParams();
+  console.log(`ini id kursus ${id}`);
   const { Title, Paragraph } = Typography;
 
-  const navigate = useNavigate();
-  const onCheckout = () => {
-    navigate("/invoice");
-  };
-  //   const [register] = useMutation(ADD_OFFLINE_CLASS, {
-  //     refetchQueries: [GET_OFFLINE_CLASS],
-  //   });
+  const [kursusId, setKursusId] = useState(null);
+
+  useEffect(() => {
+    // Fetch the article based on the "id" parameter
+    const fetchKursusId = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`https://be5finalproject-production.up.railway.app/kursus/${id}`, {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg2NzkzOTgwLCJleHAiOjE2ODY3OTc1ODB9.37oG_DvWCzNhzDYf-YhTzaF23CvA86yUD3VuPg53K9s`
+          }
+        });
+        console.log(`ini kursus id ${response.data.judul}`)
+        if (response.data) {
+          setKursusId(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching KursusId:', error);
+      }
+    };
+
+    fetchKursusId();
+  }, [id]);
+
+  if (!kursusId) {
+    // Display loading state or return null if desired
+    return <div>Loading...</div>;
+  }
+
+  // const navigate = useNavigate();
+  // const onCheckout = () => {
+  //   navigate("/invoice");
+  // };
+
   const opts = {
     height: "390",
     width: "640",
@@ -39,7 +70,10 @@ const Music = () => {
     event.target.pauseVideo();
   };
 
-  useEffect(() => {}, []);
+  const url = `${kursusId.video}`;
+  const videoId = url.substring(url.lastIndexOf("/") + 1);
+  console.log(videoId); 
+
   return (
     <>
       <Carousel>
@@ -47,15 +81,15 @@ const Music = () => {
           <div className="carousel-content">
             <img
               className="carousel-image"
-              src={OfflineClassHeader}
+              src={`https://be5finalproject-production.up.railway.app/assets/${kursusId.filename}`}
               alt="Cover"
             />
             <div className="carousel-text">
               <Title level={1} style={{ color: "white" }}>
-                Program Musikalisasi Jiwa
+                {`Program ${kursusId.judul}`}
               </Title>
               <Paragraph className="carousel-description">
-                Dalami Jiwamu Melalui Lantunan Musik Syahdu
+                {`Dalami Jiwamu Melalui ${kursusId.judul}`}
               </Paragraph>
             </div>
           </div>
@@ -79,13 +113,7 @@ const Music = () => {
           <div className="offlineClass-about">
             <h3 style={{ fontSize: "24px" }}>Tentang Program Ini</h3>
             <p style={{ fontSize: "14px" }}>
-              Program musikalisasi jiwa merupakan salah satu dari beberapa
-              program yang disediakan oleh remedial. Program ini disediakan tak
-              hanya memberikan pelajaran musik biasa, namun juga membantu
-              mengembangkan dunia musik tanah air dengan mengasah bakat para
-              individu. Musikalisasi Jiwa menyediakan berbagai kelas sesuai
-              dengan kebutuhan bagi siswa siswa SMA yang ingin belajar secara
-              interaktif dan menyenangkan.
+              {kursusId.deskiripsi}
             </p>
           </div>
         </Col>
@@ -133,21 +161,24 @@ const Music = () => {
                 className="box-shadow"
                 hoverable
                 style={{ width: "100%", margin: "16px" }}
-                cover={<img alt="example" src={PemahamanNada} />}
+                cover={<img alt="example" src={`https://be5finalproject-production.up.railway.app/assets/${kursusId.filename}`} />}
               >
-                <Title level={4}>Prinsip Prinsip Dasar</Title>
+                <Title level={4}>{`Program ${kursusId.judul}`}</Title>
                 <hr />
                 <div className="content-offlineClass">
-                  <ul>
-                    <li>Modul Teknik Art & Design</li>
-                    <li>Modul 1: Desain Grafis</li>
-                    <li>Modul 2: Seni Instalasi</li>
-                    <li>Belajar Mandiri</li>
-                  </ul>
+                  {kursusId.silabus.map((paragraph, index) => (
+                     <ul>
+                     <li key={index}>{paragraph}</li>
+                     {/* <li>Modul 1: Desain Grafis</li>
+                     <li>Modul 2: Seni Instalasi</li>
+                     <li>Belajar Mandiri</li> */}
+                   </ul>
+                  ))}
+                 
                 </div>
               </Card>
             </Col>
-            <Col xs={24} sm={12} md={8} lg={6} xl={6}>
+            {/* <Col xs={24} sm={12} md={8} lg={6} xl={6}>
               <Card
                 className="box-shadow"
                 hoverable
@@ -165,7 +196,7 @@ const Music = () => {
                   </ul>
                 </div>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
         </div>
         <div className="section-timeline">
@@ -204,7 +235,7 @@ const Music = () => {
           <Col xs={24} xl={12}>
             <div className="video-offlineClass">
               <YouTube
-                videoId="G21oS6d-DtA"
+                videoId={videoId}
                 opts={opts}
                 onReady={onReadyVideo}
               />
@@ -228,7 +259,7 @@ const Music = () => {
                 color: "white",
                 border: 0,
               }}
-              onClick={onCheckout}
+              // onClick={onCheckout}
             >
               Checkout Sekarang
             </Button>

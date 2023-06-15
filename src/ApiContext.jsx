@@ -9,12 +9,8 @@ export const ApiProvider = ({ children }) => {
 useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:3000/artikel', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        // const token = localStorage.getItem('token');
+        const response = await fetch('https://be5finalproject-production.up.railway.app/artikel',);
 
         if (response.ok) {
           const data = await response.json();
