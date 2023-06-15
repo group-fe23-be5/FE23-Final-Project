@@ -15,22 +15,34 @@ import Invoice from "./pages/Invoice/Invoice"
 import VirtualAccount from "./pages/VirtualAccount/VirtualAccount"
 import Mentor from "./pages/Mentor/Mentor"
 import MetodePembayaran from "./pages/MetodePembayaran/MetodePembayaran"
-import Music from "./pages/OfflineClass/music";
+import Music from "./pages/OfflineClass/Music";
 import Art from "./pages/OfflineClass/Art";
 import Dance from "./pages/OfflineClass/Dance";
+// import jwt from 'jsonwebtoken';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    
+  
     if (token) {
-      setIsAuthenticated(true);
+      const tokenData = JSON.parse(atob(token.split('.')[1]));
+      const expiration = tokenData.exp;
+      const currentTime = Math.floor(Date.now() / 1000);
+  
+      if (currentTime > expiration) {
+        localStorage.removeItem('token');
+        setIsAuthenticated(false);
+      } else {
+        setIsAuthenticated(true);
+      }
     } else {
       setIsAuthenticated(false);
     }
   }, []);
+  
+  
 
   return (
     <>
@@ -46,9 +58,12 @@ function App() {
         <Route path="/*" element={<NotFound />}/>
         <Route path="/course" element={<Course />}/>
         <Route path="/offlineClass" element={<OfflineClass />}/>
-        <Route path="/invoice" element={<Invoice />}/>
-        <Route path="/virtualAccount" element={<VirtualAccount />}/>
+        {/* <Route path="/invoice" element={<Invoice />}/> */}
+        <Route path="/invoice/:id" element={<Invoice />}/>
+        {/* <Route path="/virtualAccount" element={<VirtualAccount />}/> */}
+        <Route path="/virtualAccount/:id" element={<VirtualAccount />}/>
         <Route path="/metodePembayaran" element={<MetodePembayaran />}/>
+        <Route path="/metodePembayaran/:id" element={<MetodePembayaran />}/>
         <Route path="/mentor" element={<Mentor/>}/>
         <Route path="/kursus/:id" element={<Music />} />
         <Route path="/art" element={<Art />} />

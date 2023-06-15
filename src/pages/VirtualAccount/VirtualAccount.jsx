@@ -1,16 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Barcode from "react-barcode"
 import { Card, Container, Row, Col, Button, Modal } from "react-bootstrap"
-import { Link } from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 import './VirtualAccount.css'
+import axios from 'axios';
 
 function VirtualAccount(){
+    const { id } = useParams();
+    const [paymentId, setPaymentId] = useState(null);
     const totalSeconds = 24 * 60 * 60; 
     const [countdown, setCountdown] = useState(totalSeconds); 
     const colRef = useRef(null);
     const [modalShow, setModalShow] = React.useState(false);
 
+    useEffect(() => {
+        const fetchPaymentId = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get(`https://be5finalproject-production.up.railway.app/payment/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
 
+                if (response.data) {
+                    setPaymentId(response.data);
+                }
+            } catch (error) {
+                console.error('Error fetching paymentId:', error);   
+            }
+        };
+
+        fetchPaymentId();
+    }, [id]);
+
+    // if (!paymentId){
+    //     return <div>Loading...</div>;
+    // }
     useEffect(() => {
         const timer = setInterval(() => {
         setCountdown((prevCountdown) => prevCountdown - 1);
@@ -53,19 +79,19 @@ function VirtualAccount(){
                                     <Row>
                                         <Col>
                                             <h5>Total</h5>
-                                            <h3>Rp 75.000</h3>
-                                            <p>Order ID #0001 <br/><span className="counter-payment">Bayar Dalam {formatTime(countdown)}</span></p>
+                                            <h3>Rp 50.000</h3>
+                                            <p>Order ID {paymentId.va} <br/><span className="counter-payment">Bayar Dalam {formatTime(countdown)}</span></p>
                                         </Col>
                                         <Col>
-                                            <Barcode value="123456789"></Barcode>
+                                            <Barcode value={paymentId.va}></Barcode>
                                         </Col>
                                     </Row>
                                 </div>
                                 <div className="bank-detail">
-                                    <h5>Bank BNI</h5>
+                                    <h5>{paymentId.metode}</h5>
                                     <hr/>
                                         <div className="va-desc-detail">
-                                            <p>Lakukan pembayaran dari rekening Bank BNI ke nomor virtual account di bawah ini.</p>
+                                            <p>Lakukan pembayaran dari rekening {paymentId.metode} ke nomor virtual account di bawah ini.</p>
                                         </div>
                                 </div>
                                 <div className="no-va-detail">
@@ -74,7 +100,7 @@ function VirtualAccount(){
                                     <div className="va-desc-detail">
                                         <Row className="">
                                             <Col ref={colRef}>
-                                            089787868683648843
+                                            {paymentId.va}
                                             </Col>
                                             <Col className='copy-button-col'>
                                                 <Button className='copy-button'  onClick={handleCopy}>Salin</Button>

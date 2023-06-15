@@ -16,8 +16,8 @@ import { ADD_OFFLINE_CLASS, GET_OFFLINE_CLASS } from "./query";
 // import { useMutation } from "@apollo/client";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from "react-router";
+import { useParams, Link } from 'react-router-dom';
+// import { useNavigate } from "react-router";
 
 const Music = () => {
   const { id } = useParams();
@@ -33,7 +33,7 @@ const Music = () => {
         const token = localStorage.getItem('token');
         const response = await axios.get(`https://be5finalproject-production.up.railway.app/kursus/${id}`, {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg2NzkzOTgwLCJleHAiOjE2ODY3OTc1ODB9.37oG_DvWCzNhzDYf-YhTzaF23CvA86yUD3VuPg53K9s`
+            Authorization: `Bearer ${token}`
           }
         });
         console.log(`ini kursus id ${response.data.judul}`)
@@ -249,6 +249,7 @@ const Music = () => {
               </label>
               <p>Tunggu apalagi? Segera daftarkan diri Anda!</p>
             </div>
+            <Link to={`/invoice/${id}`}>
             <Button
               style={{
                 width: "50%",
@@ -263,6 +264,8 @@ const Music = () => {
             >
               Checkout Sekarang
             </Button>
+            </Link>
+            
           </Col>
         </Row>
       </div>

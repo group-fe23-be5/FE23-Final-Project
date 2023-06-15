@@ -1,12 +1,45 @@
 import { Container, Row, Col, Button, Card, Badge } from "react-bootstrap";
 import './Invoice.css'
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Invoice() {
+    const { id } = useParams();
+    const [kursusId, setKursusId] = useState(null);
+
+
     const navigate = useNavigate();
 
   const onClickMetode = () => {
-    navigate('/metodePembayaran')
+    navigate(`/metodePembayaran/${id}`)
+  }
+
+  useEffect(() => {
+    // Fetch the article based on the "id" parameter
+    const fetchKursusId = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`https://be5finalproject-production.up.railway.app/kursus/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        console.log(`ini kursus id ${response.data.judul}`)
+        if (response.data) {
+          setKursusId(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching KursusId:', error);
+      }
+    };
+
+    fetchKursusId();
+  }, [id]);
+
+  if (!kursusId) {
+    // Display loading state or return null if desired
+    return <div>Loading...</div>;
   }
 
   return (
@@ -22,7 +55,7 @@ function Invoice() {
                 <Card className="paket-card">
                     <Card.Body>
                         <Card.Title className="paket-card-title">
-                            Paket Offline Learning 3 Bulan
+                            {`Paket ${kursusId.judul}`}
                         </Card.Title>
                         <hr/>
                         <div className="detail-paket">
