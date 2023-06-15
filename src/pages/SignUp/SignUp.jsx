@@ -15,7 +15,7 @@ function SignUp(){
     const Register = async(e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3000/register', {
+            await axios.post('https://be5finalproject-production.up.railway.app/register', {
                 name: name,
                 email: email,
                 password: password,

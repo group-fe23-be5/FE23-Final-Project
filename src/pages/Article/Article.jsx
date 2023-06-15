@@ -39,7 +39,7 @@ function Article(){
       {articles.map((article) => (
         <Col className='article-col' key={article.id_artikel}>
           <Card className='article-card'>
-            <Card.Img variant='top' src={`http://localhost:3000/assets/${article.filename}`} />
+            <Card.Img variant='top' src={`https://be5finalproject-production.up.railway.app/assets/${article.filename}`} />
             <Card.Body>
               <Card.Title className='card-article-title'>
                 {article.judul}
