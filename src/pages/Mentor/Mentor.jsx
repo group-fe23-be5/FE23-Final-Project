@@ -2,6 +2,7 @@ import { Col, Container, Row, Image, Card, Button } from "react-bootstrap"
 import './Mentor.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import woman from "../../assets/woman.jpg"
 
 
 function Mentor(){
@@ -35,7 +36,7 @@ function Mentor(){
                     <h1 className="mentor-hero-desc">Temukan Mentor Sesuai yang Kamu Butuhkan Yuk !</h1>
                 </Col>
                 <Col className="mentor-hero-right">
-                    <Image src="/src/assets/woman.jpg"  className="mentor-hero-img"/>
+                    <Image src={woman} className="mentor-hero-img"/>
                 </Col>
             </Row>
             {/* <Row className="mentor-content">

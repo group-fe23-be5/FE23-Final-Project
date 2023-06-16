@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './Navigation.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import logo from "../images/logo_eduart.png";
+import logo_nav from "../images/logo_eduart.png";
 
 function Navigation() {
   const history = useNavigate();
@@ -30,7 +30,7 @@ function Navigation() {
       <Navbar expand="lg">
         <Container className="nav-container">
           <Navbar.Brand href="#home">
-            <img src={logo} alt=''/>
+            <img src={logo_nav} alt=''/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
