@@ -3,6 +3,7 @@ import './Invoice.css'
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import right_arrow from "../../images/right-arrow.png"
 
 function Invoice() {
     const { id } = useParams();
@@ -114,7 +115,7 @@ function Invoice() {
                             <h5>Pilihan Kupon Lainya</h5>
                             <h1>
                                 <Badge>
-                                    <h5><img src="https://cdn-icons-png.flaticon.com/256/7646/7646924.png" className="class-detail-icon"/> RemedialDiskon50Persen <img src="/src/assets/right-arrow.png" className="class-detail-icon" /></h5>
+                                    <h5><img src="https://cdn-icons-png.flaticon.com/256/7646/7646924.png" className="class-detail-icon"/> RemedialDiskon50Persen <img src={right_arrow} className="class-detail-icon" /></h5>
                                 </Badge>
                             </h1>
                         </div>
