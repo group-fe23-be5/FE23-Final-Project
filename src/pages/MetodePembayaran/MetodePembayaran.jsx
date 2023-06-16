@@ -59,8 +59,7 @@ function MetodePembayaran(){
         navigate(`/virtualAccount/${idPayment}`)
       }
 
-  if (!kursusId) {
-    // Display loading state or return null if desired
+  if (!kursusId || !payment) {
     return <div>Loading...</div>;
   }
 

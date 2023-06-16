@@ -9,11 +9,11 @@ function Invoice() {
     const [kursusId, setKursusId] = useState(null);
 
 
-    const navigate = useNavigate();
+//     const navigate = useNavigate();
 
-  const onClickMetode = () => {
-    navigate(`/metodePembayaran/${id}`)
-  }
+//   const onClickMetode = () => {
+//     navigate(`/metodePembayaran/${id}`)
+//   }
 
   useEffect(() => {
     // Fetch the article based on the "id" parameter
@@ -148,7 +148,9 @@ function Invoice() {
                                 </Col>
                             </Row>
                         </div>
-                        <Button className='card-invoice-button' onClick={onClickMetode}>Pilih Metode Pembayaran</Button>
+                        <Link to={`/metodePembayaran/${id}`}>
+                            <Button className='card-invoice-button' >Pilih Metode Pembayaran</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             </Col>

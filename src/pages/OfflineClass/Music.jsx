@@ -81,7 +81,7 @@ const Music = () => {
           <div className="carousel-content">
             <img
               className="carousel-image"
-              src={`https://be5finalproject-production.up.railway.app/assets/${kursusId.filename}`}
+              src={OfflineClassHeader}
               alt="Cover"
             />
             <div className="carousel-text">
@@ -161,7 +161,7 @@ const Music = () => {
                 className="box-shadow"
                 hoverable
                 style={{ width: "100%", margin: "16px" }}
-                cover={<img alt="example" src={`https://be5finalproject-production.up.railway.app/assets/${kursusId.filename}`} />}
+                cover={<img alt="example" src={`/src/assets/kursus${id}.png`} />}
               >
                 <Title level={4}>{`Program ${kursusId.judul}`}</Title>
                 <hr />

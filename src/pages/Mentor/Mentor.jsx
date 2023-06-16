@@ -131,7 +131,7 @@ function Mentor(){
                             <Card className="mentor-profil-card">
                                 <Card.Body className="mentor-profil">
                                 <Col className="mentor-profil" xs={6} md={4}>
-                                    <Image src={`https://be5finalproject-production.up.railway.app/assets/${m.filename}`} className="mentor-profil-img" roundedCircle />
+                                    <Image src={`/src/assets/mentor${m.id_mentor}.jpg`} className="mentor-profil-img" roundedCircle />
                                     <h5 className="mentor-name">{m.nama}</h5>
                                     <p className="mentor-career">{m.keahlian}</p>
                                 </Col>
