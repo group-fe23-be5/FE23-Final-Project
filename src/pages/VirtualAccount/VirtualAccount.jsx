@@ -7,16 +7,39 @@ import axios from 'axios';
 
 function VirtualAccount(){
     const { id } = useParams();
+    console.log(`id ${id}`)
     const [paymentId, setPaymentId] = useState(null);
     const totalSeconds = 24 * 60 * 60; 
     const [countdown, setCountdown] = useState(totalSeconds); 
     const colRef = useRef(null);
     const [modalShow, setModalShow] = React.useState(false);
 
+    
+
     useEffect(() => {
+        const timer = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+        }, 1000);
+
+       
+        return () => clearInterval(timer);
+    }, []);
+
+    useEffect(() => {
+       
+        if (countdown === 0) {
+        clearInterval(timer);
+        
+        }
+    }, [countdown]);
+
+    useEffect(() => {
+        console.log("hallloooo")
         const fetchPaymentId = async () => {
             try {
                 const token = localStorage.getItem('token');
+                console.log(`ini token bos ${token}`);
+                
                 const response = await axios.get(`https://be5finalproject-production.up.railway.app/payment/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -34,25 +57,9 @@ function VirtualAccount(){
         fetchPaymentId();
     }, [id]);
 
-    // if (!paymentId){
-    //     return <div>Loading...</div>;
-    // }
-    useEffect(() => {
-        const timer = setInterval(() => {
-        setCountdown((prevCountdown) => prevCountdown - 1);
-        }, 1000);
-
-       
-        return () => clearInterval(timer);
-    }, []);
-
-    useEffect(() => {
-       
-        if (countdown === 0) {
-        clearInterval(timer);
-        
-        }
-    }, [countdown]);
+    if (!paymentId){
+        return <div>Loading...</div>;
+    }
 
     const formatTime = (time) => {
         const hours = Math.floor(time / 3600);

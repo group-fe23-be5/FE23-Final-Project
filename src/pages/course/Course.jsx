@@ -64,7 +64,7 @@ const Course = () => {
             <Col xs={24} xl={12}>
               <div className="img-cardClass">
                 <img
-                  src={`https://be5finalproject-production.up.railway.app/assets/${kursus.filename}`}
+                  src={`/src/assets/kursus${kursus.id_kursus}.png`}
                   alt="cover"
                   style={{ maxWidth: "80%", maxHeight: "250px" }}
                 />

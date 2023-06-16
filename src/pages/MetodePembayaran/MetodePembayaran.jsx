@@ -84,7 +84,7 @@ function MetodePembayaran(){
                                     </Col>
                                     <hr/>
                                 </Row>
-                                <Row className="payment-option">
+                                {/* <Row className="payment-option">
                                     <h5 className="payment-sub">Minimarket</h5>
                                     <p>Transaksi di minimarket terdekat</p>
                                         <Button className="payment-option" size="lg">
@@ -95,9 +95,9 @@ function MetodePembayaran(){
                                             <img src="/src/assets/icon-alfamart.png" alt="icon"/>
                                             <p className="payment-option">Alfamart</p>
                                         </Button>
-                                </Row>
+                                </Row> */}
                                 <Row className="payment-option" key={payment.idPayment}>
-                                    <h5 className="payment-sub">Transfer Virtual Account</h5>
+                                    <h5 className="payment-sub">Menggunakan Bank dan E-Wallet Lebih Mudah</h5>
                                     <p>Dengan kode unik, semuanya lebih cepat</p>
                                     {payment.map((payment) => (
                                         <Button className="payment-option" size="lg" onClick={() => onClickVa(payment.idPayment)}>
@@ -110,7 +110,7 @@ function MetodePembayaran(){
                                     ))} 
                                 </Row> 
                                
-                                <Row className="payment-option">
+                                {/* <Row className="payment-option">
                                     <h5 className="payment-sub">E-Money</h5>
                                     <p>Pembayaran terhubung langsung dengan aplikasi e-wallet kamu</p>
                                     <Button className="payment-option" size="lg">
@@ -129,7 +129,7 @@ function MetodePembayaran(){
                                         <img src="/src/assets/icon-flazz.png" alt="icon"/>
                                         <p className="payment-option">Flazz</p>
                                     </Button>
-                                </Row>   
+                                </Row>    */}
                             </Card.Body>
                         </Card>
                     </Col>
