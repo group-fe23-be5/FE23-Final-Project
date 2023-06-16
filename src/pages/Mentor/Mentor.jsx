@@ -2,7 +2,7 @@ import { Col, Container, Row, Image, Card, Button } from "react-bootstrap"
 import './Mentor.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import woman from "../../assets/woman.jpg"
+import woman from "../../images/woman.jpg"
 
 
 function Mentor(){

@@ -3,9 +3,11 @@ import './Home.css'
 import { useNavigate, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import writing_hero from "../assets/writing_hero.png";
-import topi from "../assets/topi.png"
-import books from "../assets/books.png"
+import writing_hero from "../images/writing_hero.png";
+import topi from "../images/topi.png"
+import books from "../images/books.png"
+import online_class from "../images/online_class.png"
+import offline_class from "../images/offline_class.jpg"
 
 function Home() {
   const [artikel, setArtikel] = useState([]);
@@ -72,7 +74,7 @@ function Home() {
         <Row className='class-row'>
           <Col className='class-col' >
             <Card className='class-card' >
-              <Card.Img variant="top" src="/src/assets/online_class.png" />
+              <Card.Img variant="top" src={online_class}/>
               <Card.Body>
                 <Card.Title className='card-class-title'>Online Class</Card.Title>
                 <Card.Text className='card-class-title'>
@@ -110,7 +112,7 @@ function Home() {
           </Col>
           <Col className='class-col'>
             <Card className='class-card'>
-              <Card.Img variant="top" src="/src/assets/offline_class.jpg" />
+              <Card.Img variant="top" src={offline_class} />
               <Card.Body>
                 <Card.Title className='card-class-title'>Offline Class</Card.Title>
                 <Card.Text className='card-class-title'>

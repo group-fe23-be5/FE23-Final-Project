@@ -4,7 +4,7 @@ import { Card, Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { Link, useParams} from 'react-router-dom';
 import './VirtualAccount.css'
 import axios from 'axios';
-import payment from "../../assets/payment.png"
+import payment from "../../images/payment.png"
 
 function VirtualAccount(){
     const { id } = useParams();
