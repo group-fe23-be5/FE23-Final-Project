@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 import logo_nav from "../images/logo_eduart.png";
+import icon_profile from "../images/icon-profile.png"
 
 
 function NavigationIn() {
@@ -80,7 +81,7 @@ function NavigationIn() {
                   <NavDropdown.Item onClick={handleLogout} href="#action/3.1">Logout</NavDropdown.Item>
                 </NavDropdown>
               ) : null}
-                  <img src="/src/assets/icon-profile.png" alt="" />
+                  <img src={icon_profile} alt="" />
                 </Nav>
               </Navbar.Collapse>
           </Container>
