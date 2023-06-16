@@ -23,7 +23,7 @@ function SignIn(){
             console.log(`ini tokennya ${response.data.access_token}`);
             if (response.data.code === 200){
                 // history("/");
-                window.open("http://localhost:5173/", "_self");
+                window.open("https://eduart-fe23-be5.netlify.app/", "_self");
             }
         } catch (error) {
             if (error.response){
