@@ -4,6 +4,7 @@ import './Navigation.css'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import logo_nav from "../images/logo_eduart.png";
 
 
 function NavigationIn() {
@@ -63,7 +64,7 @@ function NavigationIn() {
         <Navbar expand="lg">
           <Container className="nav-container">
               <Navbar.Brand href="#home">
-                <img src="/src/assets/logo_eduart.png" alt="Logo" />
+                <img src={logo_nav} alt="Logo" />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">

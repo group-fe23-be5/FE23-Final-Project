@@ -4,6 +4,7 @@ import { Card, Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { Link, useParams} from 'react-router-dom';
 import './VirtualAccount.css'
 import axios from 'axios';
+import payment from "../../assets/payment.png"
 
 function VirtualAccount(){
     const { id } = useParams();
@@ -148,7 +149,7 @@ function PaymentModal(props) {
                 <h3>Yey Pembayaranmu Berhasil !!!</h3>
                 <h6>Cek Halaman Mentor Yuk !!!</h6>
             </div>
-            <img src="/src/assets/payment.png" alt=" succes" className='payment-img'/>
+            <img src={payment} alt=" succes" className='payment-img'/>
         </Modal.Body>
         <Modal.Footer>
             <Link to="/mentor">

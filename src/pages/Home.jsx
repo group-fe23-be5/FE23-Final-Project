@@ -3,6 +3,9 @@ import './Home.css'
 import { useNavigate, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import writing_hero from "../assets/writing_hero.png";
+import topi from "../assets/topi.png"
+import books from "../assets/books.png"
 
 function Home() {
   const [artikel, setArtikel] = useState([]);
@@ -39,7 +42,7 @@ function Home() {
             <Button className='hero-cta-button'>Get Started</Button>
           </Col>
           <Col>
-            <img className='hero-img' src="/src/assets/writing_hero.png" alt="hero-img" />
+            <img className='hero-img' src={writing_hero} alt="hero-img" />
           </Col>
         </Row>
       </Container>
@@ -47,14 +50,14 @@ function Home() {
       <Container className='info-section' >
         <Row>
           <Col className='info-col'>
-            <img src="/src/assets/topi.png" alt="student" />
+            <img src={topi} alt="student" />
             <div className="info-detail">
               <h2>100+</h2>
               <p>Total Siswa</p>
             </div>
           </Col>
           <Col className='info-col'>
-            <img src="/src/assets/books.png" alt="course" />
+            <img src={books} alt="course" />
             <div className="info-detail">
               <h2>5+</h2>
               <p>Total Pembelajaran</p>

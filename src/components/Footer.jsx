@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebookF, FaTwitter, FaYoutube, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import {Link} from 'react-router-dom'
 import './Footer.css'
+import logo_footer from "../assets/images/logo-white.png"
 
 function Footer() {
   return (
@@ -10,6 +11,7 @@ function Footer() {
       <Container className='footer-container'>
         <Row className='footer-row'>
           <Col lg={4} className='footer-desc' >
+            <img src={logo_footer} alt="logo-footer" />
             <p>Remedial merupakan program yang Serrum lakukan 
               dengan melibatkan murid SMA (pilihan) di Jakarta 
               dan sekitarnya yang berfokus pada pola menggali 
