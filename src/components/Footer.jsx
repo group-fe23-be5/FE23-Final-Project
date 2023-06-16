@@ -10,7 +10,7 @@ function Footer() {
       <Container className='footer-container'>
         <Row className='footer-row'>
           <Col lg={4} className='footer-desc' >
-            <img src="/src/assets/logo-white.png" alt="logo-footer" />
+            <img src={require('/src/assets/logo-white.png')} alt="logo-footer" />
             <p>Remedial merupakan program yang Serrum lakukan 
               dengan melibatkan murid SMA (pilihan) di Jakarta 
               dan sekitarnya yang berfokus pada pola menggali 
